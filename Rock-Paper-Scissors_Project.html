@@ -12,31 +12,47 @@
 
 
 	<script>
-		// console.log('Hello World!');
-
-
-
 		function computerPlay() {
 			var computerChoice = Math.floor(Math.random() * 3) + 1;
 
 			switch (computerChoice) {
 				case 1:
-					return ("Rock");
+					return ("rock");
 
 				case 2:
-					return ("Paper");
+					return ("paper");
 
 				case 3:
-					return ("Scissors");
+					return ("scissors");
 			}
 		}
-		console.log(computerPlay());
+		// console.log(computerPlay());
 		const computerSelection = computerPlay();
-		// let playerSelection = prompt('Rock, paper or scissors?', '')
+		let playerSelection = prompt('Rock, paper or scissors?', '').toLowerCase();
+		// 
+		console.log(playerSelection);
+		// 
 
 		function playRound(playerSelection, computerSelection) {
 
+			if (playerSelection === computerSelection) {
+				console.log('Its a tie');
+			} else if (
+				(playerSelection === 'rock' && computerSelection === 'scissors') ||
+				(playerSelection === 'paper' && computerSelection === 'rock') ||
+				(playerSelection === 'scissors' && computerSelection === 'paper')
+			) {
+				console.log('You win!');
+			} else if (
+				(computerSelection === 'rock' && playerSelection === 'scissors') ||
+				(computerSelection === 'paper' && playerSelection === 'rock') ||
+				(computerSelection === 'scissors' && playerSelection === 'paper')
+			) {
+				console.log('Computer win!');
+			}
 		}
+		playRound(playerSelection, computerSelection);
+
 
 	</script>
 
