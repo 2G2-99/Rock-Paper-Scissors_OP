@@ -11,7 +11,30 @@
 <body>
 
 
-	<script></script>
+	<script>
+		function computerSelection() {
+			var computerSelection = Math.floor(Math.random() * 3);
+
+			switch (computerSelection) {
+				case 0:
+					return 'rock';
+
+				case 1:
+					return 'paper';
+
+				case 2:
+					return 'scissors';
+			}
+		}
+		console.log(computerSelection());
+
+		let playerSelection = prompt('Rock, paper or scissors?', '').toLowerCase();
+		console.log(playerSelection);
+
+		function playRound(playerSelection, computerSelection) {
+
+		}
+	</script>
 
 
 </body>
