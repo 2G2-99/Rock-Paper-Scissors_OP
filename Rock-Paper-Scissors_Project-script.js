@@ -1,7 +1,9 @@
 // GAME
-function computerPlay() {
-	var randomNumber = Math.floor(Math.random() * 3);
+let playerPlay = prompt('Rock, paper or scissors?', '').toLowerCase();
+console.log('You choose ' + playerPlay);
 
+let randomNumber = Math.floor(Math.random() * 3);
+function computerPlay() {
 	switch (randomNumber) {
 		case 0:
 			return 'rock';
@@ -17,27 +19,26 @@ function computerPlay() {
 }
 console.log(computerPlay());
 
-let playerPlay = prompt('Rock, paper or scissors?', '').toLowerCase();
-console.log(playerPlay);
 
 const computerSelection = computerPlay();
 const playerSelection = playerPlay;
 
 function playRound(playerChoice, computerChoice) {
-	if (playerChoice === 'rock' && computerChoice === 'scissors') {
-		return ('You win, the rock smashed the scissors!');
-	} else if (playerChoice === 'paper' && computerChoice === 'rock') {
-		return ('You win, the paper has covered the rock!');
-	} else if (playerChoice === 'scissors' && computerChoice === 'paper') {
-		return ('You win, the scissors cut the paper!');
-	} else if (computerChoice === 'rock' && playerChoice === 'scissors') {
-		return ('Computer win, the rock smashed the scissors!');
-	} else if (computerChoice === 'paper' && playerChoice === 'rock') {
-		return ('Computer win, the paper has covered the rock!');
-	} else if (computerChoice === 'scissors' && playerChoice === 'paper') {
-		return ('Computer win, the scissors cut the paper!');
-	} else if (playerChoice === computerChoice) {
+
+	if (playerSelection === computerSelection) {
 		return ('Its a tie');
+	} else if (
+		(playerSelection === 'rock' && computerSelection === 'scissors') ||
+		(playerSelection === 'paper' && computerSelection === 'rock') ||
+		(playerSelection === 'scissors' && computerSelection === 'paper')
+	) {
+		return ('You win!');
+	} else if (
+		(computerSelection === 'rock' && playerSelection === 'scissors') ||
+		(computerSelection === 'paper' && playerSelection === 'rock') ||
+		(computerSelection === 'scissors' && playerSelection === 'paper')
+	) {
+		return ('Computer win!');
 	}
 }
 
