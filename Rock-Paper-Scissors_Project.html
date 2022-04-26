@@ -14,29 +14,25 @@
 	<script>
 		// console.log('Hello World!');
 
+
+
 		function computerPlay() {
 			var computerChoice = Math.floor(Math.random() * 3) + 1;
 
 			switch (computerChoice) {
 				case 1:
-					console.log('The computer plays with rock!');
-					break;
+					return ("Rock");
 
 				case 2:
-					console.log('The computer plays with paper!');
-					break;
+					return ("Paper");
 
 				case 3:
-					console.log('The computer plays with scissors!');
-					break;
-
-				default:
-					break;
+					return ("Scissors");
 			}
 		}
-		// computerPlay();
+		console.log(computerPlay());
 		const computerSelection = computerPlay();
-		let playerSelection = prompt('Rock, paper or scissors?', '')
+		// let playerSelection = prompt('Rock, paper or scissors?', '')
 
 		function playRound(playerSelection, computerSelection) {
 
