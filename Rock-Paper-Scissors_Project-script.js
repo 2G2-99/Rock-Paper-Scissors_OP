@@ -1,7 +1,10 @@
 // GAME
+
+// Player play
 let playerPlay = prompt('Rock, paper or scissors?', '').toLowerCase();
 console.log('You choose ' + playerPlay);
 
+// Computer play
 let randomNumber = Math.floor(Math.random() * 3);
 function computerPlay() {
 	switch (randomNumber) {
@@ -15,32 +18,33 @@ function computerPlay() {
 		case 2:
 			return 'scissors';
 			break;
-	}
-}
+	};
+};
 console.log(computerPlay());
 
+// Naming player and computer functions
+const computerChoice = computerPlay();
+const playerChoice = playerPlay;
 
-const computerSelection = computerPlay();
-const playerSelection = playerPlay;
-
+// Round function
 function playRound(playerChoice, computerChoice) {
 
-	if (playerSelection === computerSelection) {
+	if (playerChoice === computerChoice) {
 		return ('Its a tie');
 	} else if (
-		(playerSelection === 'rock' && computerSelection === 'scissors') ||
-		(playerSelection === 'paper' && computerSelection === 'rock') ||
-		(playerSelection === 'scissors' && computerSelection === 'paper')
+		(playerChoice === 'rock' && computerChoice === 'scissors') ||
+		(playerChoice === 'paper' && computerChoice === 'rock') ||
+		(playerChoice === 'scissors' && computerChoice === 'paper')
 	) {
 		return ('You win!');
 	} else if (
-		(computerSelection === 'rock' && playerSelection === 'scissors') ||
-		(computerSelection === 'paper' && playerSelection === 'rock') ||
-		(computerSelection === 'scissors' && playerSelection === 'paper')
+		(computerChoice === 'rock' && playerChoice === 'scissors') ||
+		(computerChoice === 'paper' && playerChoice === 'rock') ||
+		(computerChoice === 'scissors' && playerChoice === 'paper')
 	) {
 		return ('Computer win!');
 	}
 }
+console.log(playRound(playerChoice, computerChoice));
 
-console.log(playRound(playerSelection, computerSelection));
 
