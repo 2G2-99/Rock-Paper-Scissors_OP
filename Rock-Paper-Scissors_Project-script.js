@@ -1,4 +1,7 @@
 // GAME
+let round = 1;
+let PlayerScore = 0;
+let computerScore = 0
 
 // Player play
 let playerPlay = prompt('Rock, paper or scissors?', '').toLowerCase();
@@ -30,21 +33,32 @@ const playerChoice = playerPlay;
 function playRound(playerChoice, computerChoice) {
 
 	if (playerChoice === computerChoice) {
+		round += 1;
 		return ('Its a tie');
 	} else if (
 		(playerChoice === 'rock' && computerChoice === 'scissors') ||
 		(playerChoice === 'paper' && computerChoice === 'rock') ||
 		(playerChoice === 'scissors' && computerChoice === 'paper')
 	) {
-		return ('You win!');
+		round += 1;
+		PlayerScore += 1;
+		return (`You win! ${playerChoice} beats ${computerChoice}`);
 	} else if (
 		(computerChoice === 'rock' && playerChoice === 'scissors') ||
 		(computerChoice === 'paper' && playerChoice === 'rock') ||
 		(computerChoice === 'scissors' && playerChoice === 'paper')
 	) {
-		return ('Computer win!');
+		round += 1;
+		computerScore += 1;
+		return (`Computer win! ${computerChoice} beats ${playerChoice}`);
 	}
 }
 console.log(playRound(playerChoice, computerChoice));
 
+// Repeating round
+function game() {
+	for (let i = 1; i <= round; i++) {
+		
+	};
+};
 
