@@ -37,32 +37,52 @@ function computerPlay(number) {
 console.log(computerPlay());
 
 // 
-// Defining Functions
+// Defining Parameters
 const userSelection = userPlay();
 const computerSelection = computerPlay();
 
 //
 // Game Round
-function gameRound(userChoice, computerChoice) {
+function playRound(userChoice, computerChoice) {
     if (userChoice === computerChoice) {
-        round++;
-        return ('Its a tie, play again!');
+        return ('tie');
     } else if (
-        (userChoice === 'rock' && computerChoice === 'paper') ||
+        (userChoice === 'rock' && computerChoice === 'scissors') ||
         (userChoice === 'paper' && computerChoice === 'rock') ||
         (userChoice === 'scissors' && computerChoice === 'paper')
         ) {
         round++;
-        userScore++;
-        return (`You win! ${userChoice} beats ${computerChoice}`);
+        return ('user');
     } else if (
 		(computerChoice === 'rock' && userChoice === 'scissors') ||
 		(computerChoice === 'paper' && userChoice === 'rock') ||
 		(computerChoice === 'scissors' && userChoice === 'paper')
 	) {
 		round++;
-		computerScore++;
-		return (`Computer win! ${computerChoice} beats ${userChoice}`);
+		return ('computer');
 	};
 };
-console.log(gameRound(userSelection, computerSelection));
+console.log(playRound(userSelection, computerSelection));
+
+// 
+// Score Message
+function scoreMessage() {
+    let roundResult = playRound(userSelection, computerSelection);
+
+    if (roundResult === "tie") {
+        return ("It's a tie, no one scores!") ;
+    } else if (roundResult === "user") {
+        userScore++;
+        return (`You won, ${userSelection} beats ${computerSelection} !`) ;
+    } else if (roundResult === "computer") {
+        computerScore++;
+        return (`You lost, ${computerSelection} beats ${userSelection} !`) ;  
+    };
+};
+console.log(scoreMessage());
+
+// 
+// // Game Loop
+// while (userSelection < 5 && computerSelection < 5) {
+//     gameRound();
+// }
