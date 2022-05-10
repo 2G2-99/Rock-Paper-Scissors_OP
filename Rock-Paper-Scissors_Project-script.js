@@ -5,9 +5,10 @@ let computerScore = 0;
 
 // 
 // User Play
-let userInput = window.prompt('Rock, Paper or Scissors?', '').toLowerCase();
 
-function userPlay(input) {
+function userPlay() {
+    let userInput = window.prompt('Rock, Paper or Scissors?', '').toLowerCase();
+
     if (userInput.includes('rock') || userInput.includes('paper') || userInput.includes('scissors')) {
         return (userInput);
     } else {
@@ -16,13 +17,12 @@ function userPlay(input) {
         return (userInput);
     };
 };
-console.log(userPlay());
 
 // 
 // Computer Play
 let randomNumber = Math.floor(Math.random() * 3);
 
-function computerPlay(number) {
+function computerPlay() {
     switch (randomNumber) {
         case 0:
             return 'rock';
@@ -34,12 +34,14 @@ function computerPlay(number) {
             return 'scissors';
     };
 };
-console.log(computerPlay());
 
 // 
 // Defining Parameters
 const userSelection = userPlay();
+console.log(userSelection);
+
 const computerSelection = computerPlay();
+console.log(computerSelection);
 
 //
 // Game Round
@@ -53,7 +55,7 @@ function playRound(userChoice, computerChoice) {
         ) {
         round++;
         userScore++;
-        return (`You won, ${userSelection} beats ${computerSelection} !`);
+        return (`You won, ${userChoice} beats ${computerChoice}!`);
     } else if (
 		(computerChoice === 'rock' && userChoice === 'scissors') ||
 		(computerChoice === 'paper' && userChoice === 'rock') ||
@@ -61,7 +63,7 @@ function playRound(userChoice, computerChoice) {
 	) {
 		round++;
         computerScore++;
-		return (`You lost, ${computerSelection} beats ${userSelection} !`);
+		return (`You lost, ${computerChoice} beats ${userChoice}!`);
 	};
 };
 console.log(playRound(userSelection, computerSelection));
@@ -70,9 +72,10 @@ console.log(playRound(userSelection, computerSelection));
 // Game Loop
 function game() {
     while (userSelection < 5 && computerSelection < 5) {
-		playRound(userSelection(), computerSelection());
-		alert(`The score is ${userScore} - ${computerScore}`);
-        window.prompt('Rock, Paper, or Scissors').toLowerCase();
-	};
+        userPlay();
+        computerPlay();
+        playRound(userSelection(), computerSelection());
+        alert(`The score is ${userScore} - ${computerScore} and you are on round number ${round}`);
+    };
 };
 game();
