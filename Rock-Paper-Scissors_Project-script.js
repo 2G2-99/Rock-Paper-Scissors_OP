@@ -45,7 +45,7 @@ const computerSelection = computerPlay();
 // Game Round
 function playRound(userChoice, computerChoice) {
     if (userChoice === computerChoice) {
-        return ('tie');
+        return ('It\'s a tie, no one scores!');
     } else if (
         (userChoice === 'rock' && computerChoice === 'scissors') ||
         (userChoice === 'paper' && computerChoice === 'rock') ||
@@ -53,7 +53,7 @@ function playRound(userChoice, computerChoice) {
         ) {
         round++;
         userScore++;
-        return ('user');
+        return (`You won, ${userSelection} beats ${computerSelection} !`);
     } else if (
 		(computerChoice === 'rock' && userChoice === 'scissors') ||
 		(computerChoice === 'paper' && userChoice === 'rock') ||
@@ -61,28 +61,18 @@ function playRound(userChoice, computerChoice) {
 	) {
 		round++;
         computerScore++;
-		return ('computer');
+		return (`You lost, ${computerSelection} beats ${userSelection} !`);
 	};
 };
-// console.log(playRound(userSelection, computerSelection));
+console.log(playRound(userSelection, computerSelection));
 
 // 
-// Score Message
-// Score Message
-function scoreMessage() {
-    let roundResult = playRound(userSelection, computerSelection);
-
-    if (roundResult === 'tie') {
-        return ('It\'s a tie, no one scores!') ;
-    } else if (roundResult === 'user') {
-        return (`You won, ${userSelection} beats ${computerSelection} !`) ;
-    } else if (roundResult === 'computer') {
-        return (`You lost, ${computerSelection} beats ${userSelection} !`) ;  
-    };
+// Game Loop
+function game() {
+    while (userSelection < 5 && computerSelection < 5) {
+		playRound(userSelection(), computerSelection());
+		alert(`The score is ${userScore} - ${computerScore}`);
+        window.prompt('Rock, Paper, or Scissors').toLowerCase();
+	};
 };
-console.log(scoreMessage());
-// 
-// // Game Loop
-while (userSelection < 5 && computerSelection < 5) {
-    playRound();
-};
+game();
