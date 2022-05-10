@@ -52,6 +52,7 @@ function playRound(userChoice, computerChoice) {
         (userChoice === 'scissors' && computerChoice === 'paper')
         ) {
         round++;
+        userScore++;
         return ('user');
     } else if (
 		(computerChoice === 'rock' && userChoice === 'scissors') ||
@@ -59,30 +60,29 @@ function playRound(userChoice, computerChoice) {
 		(computerChoice === 'scissors' && userChoice === 'paper')
 	) {
 		round++;
+        computerScore++;
 		return ('computer');
 	};
 };
-console.log(playRound(userSelection, computerSelection));
+// console.log(playRound(userSelection, computerSelection));
 
 // 
+// Score Message
 // Score Message
 function scoreMessage() {
     let roundResult = playRound(userSelection, computerSelection);
 
-    if (roundResult === "tie") {
-        return ("It's a tie, no one scores!") ;
-    } else if (roundResult === "user") {
-        userScore++;
+    if (roundResult === 'tie') {
+        return ('It\'s a tie, no one scores!') ;
+    } else if (roundResult === 'user') {
         return (`You won, ${userSelection} beats ${computerSelection} !`) ;
-    } else if (roundResult === "computer") {
-        computerScore++;
+    } else if (roundResult === 'computer') {
         return (`You lost, ${computerSelection} beats ${userSelection} !`) ;  
     };
 };
 console.log(scoreMessage());
-
 // 
 // // Game Loop
-// while (userSelection < 5 && computerSelection < 5) {
-//     gameRound();
-// }
+while (userSelection < 5 && computerSelection < 5) {
+    playRound();
+};
