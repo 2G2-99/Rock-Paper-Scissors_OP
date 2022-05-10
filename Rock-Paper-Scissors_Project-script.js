@@ -1,64 +1,68 @@
-// GAME
+// Logic Variables
 let round = 1;
-let PlayerScore = 0;
-let computerScore = 0
+let userScore = 0;
+let computerScore = 0;
 
-// Player play
-let playerPlay = prompt('Rock, paper or scissors?', '').toLowerCase();
-console.log('You choose ' + playerPlay);
+// 
+// User Play
+let userInput = window.prompt('Rock, Paper or Scissors?', '').toLowerCase();
 
-// Computer play
+function userPlay(input) {
+    if (userInput.includes('rock') || userInput.includes('paper') || userInput.includes('scissors')) {
+        return (userInput);
+    } else {
+        alert('Are sure?');
+        userInput = prompt('Rock, Paper or Scissors?').toLowerCase();
+        return (userInput);
+    };
+};
+console.log(userPlay());
+
+// 
+// Computer Play
 let randomNumber = Math.floor(Math.random() * 3);
-function computerPlay() {
-	switch (randomNumber) {
-		case 0:
-			return 'rock';
-			break;
 
-		case 1:
-			return 'paper';
-			break;
-		case 2:
-			return 'scissors';
-			break;
-	};
+function computerPlay(number) {
+    switch (randomNumber) {
+        case 0:
+            return 'rock';
+            break;
+        case 1:
+            return 'paper';
+            break;
+        case 2:
+            return 'scissors';
+    };
 };
 console.log(computerPlay());
 
-// Naming player and computer functions
-const computerChoice = computerPlay();
-const playerChoice = playerPlay;
+// 
+// Defining Functions
+const userSelection = userPlay();
+const computerSelection = computerPlay();
 
-// Round function
-function playRound(playerChoice, computerChoice) {
-
-	if (playerChoice === computerChoice) {
-		round += 1;
-		return ('Its a tie');
-	} else if (
-		(playerChoice === 'rock' && computerChoice === 'scissors') ||
-		(playerChoice === 'paper' && computerChoice === 'rock') ||
-		(playerChoice === 'scissors' && computerChoice === 'paper')
+//
+// Game Round
+function gameRound(userChoice, computerChoice) {
+    if (userChoice === computerChoice) {
+        round++;
+        return ('Its a tie, play again!');
+    } else if (
+        (userChoice === 'rock' && computerChoice === 'paper') ||
+        (userChoice === 'paper' && computerChoice === 'rock') ||
+        (userChoice === 'scissors' && computerChoice === 'paper')
+        ) {
+        round++;
+        userScore++;
+        return (`You win! ${userChoice} beats ${computerChoice}`);
+    } else if (
+		(computerChoice === 'rock' && userChoice === 'scissors') ||
+		(computerChoice === 'paper' && userChoice === 'rock') ||
+		(computerChoice === 'scissors' && userChoice === 'paper')
 	) {
-		round += 1;
-		PlayerScore += 1;
-		return (`You win! ${playerChoice} beats ${computerChoice}`);
-	} else if (
-		(computerChoice === 'rock' && playerChoice === 'scissors') ||
-		(computerChoice === 'paper' && playerChoice === 'rock') ||
-		(computerChoice === 'scissors' && playerChoice === 'paper')
-	) {
-		round += 1;
-		computerScore += 1;
-		return (`Computer win! ${computerChoice} beats ${playerChoice}`);
-	}
-}
-console.log(playRound(playerChoice, computerChoice));
-
-// Repeating round
-function game() {
-	for (let i = 1; i <= round; i++) {
-		
+		round++;
+		computerScore++;
+		return (`Computer win! ${computerChoice} beats ${userChoice}`);
 	};
 };
-
+console.log(gameRound(userSelection, computerSelection));
