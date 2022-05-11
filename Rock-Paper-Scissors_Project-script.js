@@ -4,20 +4,6 @@ let userScore = 0;
 let computerScore = 0;
 
 // 
-// User Play
-function userPlay() {
-    let userInput = window.prompt('Rock, Paper or Scissors?', '').toLowerCase();
-
-    if (userInput.includes('rock') || userInput.includes('paper') || userInput.includes('scissors')) {
-        return (userInput);
-    } else {
-        alert('Are sure?');
-        userInput = prompt('Rock, Paper or Scissors?').toLowerCase();
-        return (userInput);
-    };
-};
-
-// 
 // Computer Play
 function computerPlay() {
     let randomNumber = Math.floor(Math.random() * 3);
@@ -35,6 +21,20 @@ function computerPlay() {
 };
 
 // 
+// User Play
+function userPlay() {
+    let userInput = window.prompt('Rock, Paper or Scissors?', '').toLowerCase();
+
+    if (userInput.includes('rock') || userInput.includes('paper') || userInput.includes('scissors')) {
+        return (userInput);
+    } else {
+        alert('Are sure?');
+        userInput = prompt('Rock, Paper or Scissors?').toLowerCase();
+        return (userInput);
+    };
+};
+
+// 
 // Defining Parameters
 const userSelection = userPlay();
 console.log(userSelection);
@@ -44,25 +44,25 @@ console.log(computerSelection);
 
 //
 // Game Round
-function playRound(userChoice, computerChoice) {
-    if (userChoice === computerChoice) {
+function playRound(userSelection, computerSelection) {
+    if (userSelection === computerSelection) {
         return ('It\'s a tie, no one scores!');
     } else if (
-        (userChoice === 'rock' && computerChoice === 'scissors') ||
-        (userChoice === 'paper' && computerChoice === 'rock') ||
-        (userChoice === 'scissors' && computerChoice === 'paper')
+        (userSelection === 'rock' && computerSelection === 'scissors') ||
+        (userSelection === 'paper' && computerSelection === 'rock') ||
+        (userSelection === 'scissors' && computerSelection === 'paper')
         ) {
         round++;
         userScore++;
-        return (`You won, ${userChoice} beats ${computerChoice}!`);
+        return (`You won, ${userSelection} beats ${computerSelection}!`);
     } else if (
-		(computerChoice === 'rock' && userChoice === 'scissors') ||
-		(computerChoice === 'paper' && userChoice === 'rock') ||
-		(computerChoice === 'scissors' && userChoice === 'paper')
+		(computerSelection === 'rock' && userSelection === 'scissors') ||
+		(computerSelection === 'paper' && userSelection === 'rock') ||
+		(computerSelection === 'scissors' && userSelection === 'paper')
 	) {
 		round++;
         computerScore++;
-		return (`You lost, ${computerChoice} beats ${userChoice}!`);
+		return (`You lost, ${computerSelection} beats ${userSelection}!`);
 	};
 };
 console.log(playRound(userSelection, computerSelection));
@@ -71,8 +71,6 @@ console.log(playRound(userSelection, computerSelection));
 // Game Loop
 function game() {
     while (userSelection < 5 && computerSelection < 5) {
-        userPlay();
-        computerPlay();
         playRound(userSelection(), computerSelection());
         alert(`The score is ${userScore} - ${computerScore} and you are on round number ${round}`);
     };
