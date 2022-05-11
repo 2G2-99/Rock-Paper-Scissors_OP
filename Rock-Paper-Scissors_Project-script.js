@@ -76,9 +76,9 @@ function game() {
     };
 
     if ((userScore === 5 )) {
-        console.log(`Congratulations! You win the game in round ${round}`);
+        alert(`Congratulations! You win the game in round ${round}`);
     } else if (computerScore === 5) {
-        console.log(`GAME OVER! The CPU win the game in round ${round}`);
+        alert(`GAME OVER! The CPU win the game in round ${round}`);
     };
 };
 game();
