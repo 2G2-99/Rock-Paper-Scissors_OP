@@ -40,6 +40,7 @@ function playRound(userSelection, computerSelection) {
     if (userSelection === computerSelection) {
         round++;
         console.log(`It's a tie, no one scores! and you are on round number ${round}`);
+        console.log(`The score is ${userScore} - ${computerScore}`);
     } else if (
         (userSelection === 'rock' && computerSelection === 'scissors') ||
         (userSelection === 'paper' && computerSelection === 'rock') ||
@@ -48,6 +49,7 @@ function playRound(userSelection, computerSelection) {
         round++;
         userScore++;
         console.log(`You won, ${userSelection} beats ${computerSelection}! and you are on round number ${round}`);
+        console.log(`The score is ${userScore} - ${computerScore}`);
     } else if (
 		(computerSelection === 'rock' && userSelection === 'scissors') ||
 		(computerSelection === 'paper' && userSelection === 'rock') ||
@@ -56,6 +58,7 @@ function playRound(userSelection, computerSelection) {
 		round++;
         computerScore++;
 		console.log(`You lost, ${computerSelection} beats ${userSelection}! and you are on round number ${round}`);
+        console.log(`The score is ${userScore} - ${computerScore}`);
 	};
 };
 
@@ -70,7 +73,12 @@ playRound(userSelection, computerSelection);
 function game() {
     while (userScore < 5 && computerScore < 5) {
         playRound(userPlay(), computerPlay());
-        console.log(`The score is ${userScore} - ${computerScore}`);
+    };
+
+    if ((userScore === 5 )) {
+        console.log(`Congratulations! You win the game in round ${round}`);
+    } else if (computerScore === 5) {
+        console.log(`GAME OVER! The CPU win the game in round ${round}`);
     };
 };
 game();
