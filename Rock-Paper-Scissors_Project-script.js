@@ -43,7 +43,7 @@ const computerSelection = computerPlay();
 console.log(computerSelection);
 
 //
-// Game Round
+// Game Round 
 function playRound(userSelection, computerSelection) {
     if (userSelection === computerSelection) {
         return ('It\'s a tie, no one scores!');
@@ -71,7 +71,7 @@ console.log(playRound(userSelection, computerSelection));
 // Game Loop
 function game() {
     while (userSelection < 5 && computerSelection < 5) {
-        playRound(userSelection(), computerSelection());
+        playRound(userPlay(), computerPlay());
         alert(`The score is ${userScore} - ${computerScore} and you are on round number ${round}`);
     };
 };
