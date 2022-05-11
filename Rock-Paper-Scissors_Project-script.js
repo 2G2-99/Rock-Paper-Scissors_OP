@@ -5,7 +5,6 @@ let computerScore = 0;
 
 // 
 // User Play
-
 function userPlay() {
     let userInput = window.prompt('Rock, Paper or Scissors?', '').toLowerCase();
 
@@ -20,9 +19,9 @@ function userPlay() {
 
 // 
 // Computer Play
-let randomNumber = Math.floor(Math.random() * 3);
-
 function computerPlay() {
+    let randomNumber = Math.floor(Math.random() * 3);
+
     switch (randomNumber) {
         case 0:
             return 'rock';
