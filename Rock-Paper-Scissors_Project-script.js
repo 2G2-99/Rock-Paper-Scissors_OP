@@ -70,9 +70,9 @@ console.log(playRound(userSelection, computerSelection));
 // 
 // Game Loop
 function game() {
-    while (userSelection < 5 && computerSelection < 5) {
+    while (userScore < 5 && computerScore < 5) {
         playRound(userPlay(), computerPlay());
-        alert(`The score is ${userScore} - ${computerScore} and you are on round number ${round}`);
+        console.log(`The score is ${userScore} - ${computerScore} and you are on round number ${round}`);
     };
 };
 game();
