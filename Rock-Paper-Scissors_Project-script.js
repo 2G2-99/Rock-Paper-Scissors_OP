@@ -1,5 +1,5 @@
 // Logic Variables
-let round = 1;
+let round = 0;
 let userScore = 0;
 let computerScore = 0;
 
@@ -34,19 +34,12 @@ function userPlay() {
     };
 };
 
-// 
-// Defining Parameters
-const userSelection = userPlay();
-console.log(userSelection);
-
-const computerSelection = computerPlay();
-console.log(computerSelection);
-
 //
 // Game Round 
 function playRound(userSelection, computerSelection) {
     if (userSelection === computerSelection) {
-        return ('It\'s a tie, no one scores!');
+        round++;
+        console.log(`It's a tie, no one scores! and you are on round number ${round}`);
     } else if (
         (userSelection === 'rock' && computerSelection === 'scissors') ||
         (userSelection === 'paper' && computerSelection === 'rock') ||
@@ -54,7 +47,7 @@ function playRound(userSelection, computerSelection) {
         ) {
         round++;
         userScore++;
-        return (`You won, ${userSelection} beats ${computerSelection}!`);
+        console.log(`You won, ${userSelection} beats ${computerSelection}! and you are on round number ${round}`);
     } else if (
 		(computerSelection === 'rock' && userSelection === 'scissors') ||
 		(computerSelection === 'paper' && userSelection === 'rock') ||
@@ -62,17 +55,22 @@ function playRound(userSelection, computerSelection) {
 	) {
 		round++;
         computerScore++;
-		return (`You lost, ${computerSelection} beats ${userSelection}!`);
+		console.log(`You lost, ${computerSelection} beats ${userSelection}! and you are on round number ${round}`);
 	};
 };
-console.log(playRound(userSelection, computerSelection));
 
+// 
+// Defining Parameters
+let userSelection = userPlay();
+let computerSelection = computerPlay();
+
+playRound(userSelection, computerSelection);
 // 
 // Game Loop
 function game() {
     while (userScore < 5 && computerScore < 5) {
         playRound(userPlay(), computerPlay());
-        console.log(`The score is ${userScore} - ${computerScore} and you are on round number ${round}`);
+        console.log(`The score is ${userScore} - ${computerScore}`);
     };
 };
 game();
