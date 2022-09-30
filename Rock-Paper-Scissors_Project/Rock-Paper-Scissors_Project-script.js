@@ -4,6 +4,13 @@ let userScore = 0;
 let computerScore = 0;
 
 //
+// Defining Parameters and Function callings
+const userSelection = userPlay();
+const computerSelection = computerPlay();
+
+playRound(userSelection, computerSelection);
+game();
+//
 // Computer Play
 function computerPlay() {
 	const randomNumber = Math.floor(Math.random() * 3);
@@ -73,12 +80,6 @@ function playRound(userSelection, computerSelection) {
 }
 
 //
-// Defining Parameters
-const userSelection = userPlay();
-const computerSelection = computerPlay();
-
-playRound(userSelection, computerSelection);
-//
 // Game Loop
 const game = function () {
 	while (userScore < 5 && computerScore < 5) {
@@ -91,7 +92,6 @@ const game = function () {
 		window.alert(`GAME OVER! The CPU win the game in round ${round}`);
 	}
 };
-game();
 
 //
 // Accessing the DOM
